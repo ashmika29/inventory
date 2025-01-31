@@ -36,12 +36,16 @@ function AddProduct() {
       };
 
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:5000/api/products', productData, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+      const response = await axios.post(
+        'https://inventoryback-1.onrender.com/api/products', 
+        productData, 
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
         }
-      });
+      );
 
       if (response.data.success) {
         setSuccess('Product added successfully!');
