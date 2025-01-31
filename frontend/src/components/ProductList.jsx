@@ -16,7 +16,7 @@ function ProductList() {
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/products', {
+      const response = await axios.get('https://inventoryback-1.onrender.com/api/products', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -73,7 +73,7 @@ function ProductList() {
       
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `http://localhost:5000/api/products/${id}`,
+        `https://inventoryback-1.onrender.com/api/products/${id}`,
         {
           name: editFormData.name.trim(),
           description: editFormData.description.trim(),
@@ -114,7 +114,7 @@ function ProductList() {
         
         const token = localStorage.getItem('token');
         const response = await axios.delete(
-          `http://localhost:5000/api/products/${id}`,
+          `https://inventoryback-1.onrender.com/api/products/${id}`,
           {
             headers: { 'Authorization': `Bearer ${token}` }
           }
@@ -243,4 +243,5 @@ function ProductList() {
     </div>
   );
 }
+
 export default ProductList;

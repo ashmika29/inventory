@@ -6,6 +6,7 @@ function Login({ onLogin }) {
     email: '',
     password: ''
   });
+
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -18,12 +19,13 @@ function Login({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('https://inventoryback-1.onrender.com/api/auth/login', formData);
       if (response.data.token) {
+        localStorage.setItem('token', response.data.token); // Store token in local storage
         onLogin(response.data.token);
       }
     } catch (error) {
-      setError(error.response?.data?.message || 'An error occurred');
+      setError(error.response?.data?.message || 'Invalid credentials. Please try again.');
     }
   };
 
